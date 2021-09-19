@@ -23,7 +23,7 @@ class Student{
 - secretNickName : String
 Student(String name, gradeEnum grade, groupEnum group) : void
 + getGrade():gradeEnum
-+ gatName(): String
++ getName(): String
 + upgrade() : void
 + downgrade() : void
 
