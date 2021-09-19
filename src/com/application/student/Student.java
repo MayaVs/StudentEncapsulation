@@ -2,11 +2,11 @@ package com.application.student;
 
 public class Student {
     private String name;
-    private gradeEnum grade;
-    private groupEnum group;
+    private Grade grade;
+    private Group group;
     private String secretNickName;
 
-    public Student(String name, groupEnum group, gradeEnum grade) {
+    public Student(String name, Group group, Grade grade) {
         this.name = name;
         this.group = group;
         this.grade = grade;
@@ -17,16 +17,22 @@ public class Student {
         return this.name;
      }
 
-     public gradeEnum getGrade(){
+     public Grade getGrade(){
         return this.grade;
      }
 
      public void upgrade(){
-        this.grade = gradeEnum.values()[this.grade.ordinal() - 1];
+        int newGradeInd = this.grade.ordinal() - 1;
+        this.grade = Grade.values()[newGradeInd > 0 ? newGradeInd : 0];
      }
 
      public void downgrade(){
-         this.grade = gradeEnum.values()[this.grade.ordinal() + 1];
+         int newGradeInd = this.grade.ordinal() + 1;
+         this.grade = Grade.values()[newGradeInd >= Grade.values().length ? Grade.values().length-1 : newGradeInd];
+     }
+
+     public String getGroup(){
+        return this.group.name();
      }
 
 }
